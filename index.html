@@ -321,7 +321,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 $(function () {
     let coverSlider = $('.carousel');
     coverSlider.carousel({
-        duration: Number('1'),
+        duration: Number('120'),
         fullWidth: true,
         indicators: 'true' === 'true'
     });
@@ -332,7 +332,7 @@ $(function () {
     let autoCarousel = function() {
         carouselIntervalId = setInterval(function () {
             coverSlider.carousel('next');
-        }, 10);
+        }, 5000);
     };
     autoCarousel();
     
@@ -731,8 +731,8 @@ $(function () {
     $(document).ready(function () {
 
         var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-        var pvcountOffset = 80000;			  // 初始化首次数据
-        var uvcountOffset = 20000;
+        var pvcountOffset = 00;			  // 初始化首次数据
+        var uvcountOffset = 00;
 
         function fixCount() {
             if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
@@ -833,6 +833,8 @@ $(function () {
     
 
     <!-- 雪花特效 -->
+    
+    <script type="text/javascript" src="/libs/others/snow.js"></script>
     
 
 </body>

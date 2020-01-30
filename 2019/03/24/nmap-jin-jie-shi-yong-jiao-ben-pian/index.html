@@ -1286,8 +1286,8 @@ nmap -p 1433 --script ms-sql-info.nse --script-args mssql.instance-port<span cla
     $(document).ready(function () {
 
         var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-        var pvcountOffset = 80000;			  // 初始化首次数据
-        var uvcountOffset = 20000;
+        var pvcountOffset = 00;			  // 初始化首次数据
+        var uvcountOffset = 00;
 
         function fixCount() {
             if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
@@ -1388,6 +1388,8 @@ $(function () {
     
 
     <!-- 雪花特效 -->
+    
+    <script type="text/javascript" src="/libs/others/snow.js"></script>
     
 
 </body>
