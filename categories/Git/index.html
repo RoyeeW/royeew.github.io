@@ -98,6 +98,13 @@
     </li>
     
     <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -171,6 +178,15 @@
                 <i class="fa fa-fw fa-link"></i>
                 
                 关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                友情链接
             </a>
         </li>
         
@@ -261,6 +277,15 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                              chip-default "
                             style="background-color: #D5F5E3;">PenTest
                         <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/随笔/" title="随笔: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">随笔
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -400,8 +425,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
     $(document).ready(function () {
 
         var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-        var pvcountOffset = 00;			  // 初始化首次数据
-        var uvcountOffset = 00;
+        var pvcountOffset = 0040;			  // 初始化首次数据
+        var uvcountOffset = 0020;
 
         function fixCount() {
             if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
@@ -502,8 +527,6 @@ $(function () {
     
 
     <!-- 雪花特效 -->
-    
-    <script type="text/javascript" src="/libs/others/snow.js"></script>
     
 
 </body>

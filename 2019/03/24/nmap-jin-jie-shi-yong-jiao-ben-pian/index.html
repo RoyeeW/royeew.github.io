@@ -99,6 +99,13 @@
     </li>
     
     <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -172,6 +179,15 @@
                 <i class="fa fa-fw fa-link"></i>
                 
                 关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                友情链接
             </a>
         </li>
         
@@ -695,6 +711,28 @@ nmap -p 1433 --script ms-sql-info.nse --script-args mssql.instance-port<span cla
         </div>
     </div>
 
+    
+    <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'd60914fa8a632963a275',
+        clientSecret: '2ccf9f882eb5cc50d929ab4ba568d687e5f20744',
+        repo: 'royeew.github.io',
+        owner: 'RoyeeW',
+        admin: "Royee",
+        id: '2019/03/24/nmap-jin-jie-shi-yong-jiao-ben-pian/',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
     
 
     
@@ -1286,8 +1324,8 @@ nmap -p 1433 --script ms-sql-info.nse --script-args mssql.instance-port<span cla
     $(document).ready(function () {
 
         var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-        var pvcountOffset = 00;			  // 初始化首次数据
-        var uvcountOffset = 00;
+        var pvcountOffset = 0040;			  // 初始化首次数据
+        var uvcountOffset = 0020;
 
         function fixCount() {
             if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
@@ -1388,8 +1426,6 @@ $(function () {
     
 
     <!-- 雪花特效 -->
-    
-    <script type="text/javascript" src="/libs/others/snow.js"></script>
     
 
 </body>

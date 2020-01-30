@@ -98,6 +98,13 @@
     </li>
     
     <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -175,6 +182,15 @@
         </li>
         
         <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
             <a href="/contact" class="waves-effect waves-light">
                 
                 <i class="fa fa-fw fa-link"></i>
@@ -230,13 +246,9 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             <div class="card-content">
                 <div class="card-content article-card-content">
                     <div id="articleContent" data-aos="fade-up">
-                        <h1 id="欢迎留言"><a href="#欢迎留言" class="headerlink" title="欢迎留言"></a>欢迎留言</h1><p>大家有任何问题，都可以在评论区给我留言，或者加我联系方式：</p>
-<ul>
-<li>QQ：<strong>12345678</strong></li>
-<li>微信：<strong>12345678</strong></li>
-</ul>
-<p>我很忙啦，如果不是很麻烦的问题就直接在评论区留言啦。<br><strong>当然不介意小改改加我哦~~</strong></p>
-<h1 id="友链交换"><a href="#友链交换" class="headerlink" title="友链交换"></a>友链交换</h1><p>想要交换友链的小伙伴，欢迎在评论区留言，留言格式：</p>
+                        <h1 id="欢迎留言"><a href="#欢迎留言" class="headerlink" title="欢迎留言"></a>欢迎留言</h1><p><em><em>大家有任何问题，都可以在评论区给我留言.
+</em></em>欢迎任何善意的评论. 如果您不喜欢,请直接快捷键 Alt+F4 谢谢!</p>
+<h1 id="友链交换"><a href="#友链交换" class="headerlink" title="友链交换"></a>友链交换</h1><p>想要交换友链的小伙伴，欢迎在留言板留言，留言格式：</p>
 <ul>
 <li><strong>名称：</strong>你的博客名称</li>
 <li><strong>地址：</strong>你的博客地址</li>
@@ -245,10 +257,10 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 </ul>
 <p>例如我的博客友链，大家可以加到自己博客里哦：</p>
 <ul>
-<li><strong>名称：</strong>Royee</li>
-<li><strong>地址：</strong><a href="http://rpt.royee.wang">http://rpt.royee.wang</a></li>
-<li><strong>简介：</strong>ECNU NLPer</li>
-<li><strong>头像：</strong><a href="http://rpt.royee.wang/medias/avatars/avatar.jpg">http://rpt.royee.wang/medias/avatars/avatar.jpg</a></li>
+<li><strong>名称：</strong>名称</li>
+<li><strong>地址：</strong><a href="https://rpt.royee.wang">https://rpt.royee.wang</a></li>
+<li><strong>简介：</strong>blabla</li>
+<li><strong>头像：</strong><a href="https://rpt.royee.wang/medias/friendsicon/friends.png">https://rpt.royee.wang/medias/friendsicon/friends.png</a></li>
 </ul>
 
                     </div>
@@ -257,6 +269,28 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
         </div>
         <div class="card">
 
+            
+            <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'd60914fa8a632963a275',
+        clientSecret: '2ccf9f882eb5cc50d929ab4ba568d687e5f20744',
+        repo: 'royeew.github.io',
+        owner: 'RoyeeW',
+        admin: "Royee",
+        id: 'contact/index.html',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
             
 
             
@@ -606,8 +640,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
     $(document).ready(function () {
 
         var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-        var pvcountOffset = 00;			  // 初始化首次数据
-        var uvcountOffset = 00;
+        var pvcountOffset = 0040;			  // 初始化首次数据
+        var uvcountOffset = 0020;
 
         function fixCount() {
             if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
@@ -708,8 +742,6 @@ $(function () {
     
 
     <!-- 雪花特效 -->
-    
-    <script type="text/javascript" src="/libs/others/snow.js"></script>
     
 
 </body>

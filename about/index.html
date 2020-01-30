@@ -98,6 +98,13 @@
     </li>
     
     <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -175,6 +182,15 @@
         </li>
         
         <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
             <a href="/contact" class="waves-effect waves-light">
                 
                 <i class="fa fa-fw fa-link"></i>
@@ -247,14 +263,14 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 
 
 <div class="statis">
-    <span class="count"><a href="/categories" target="_blank">3</a></span>
+    <span class="count"><a href="/categories" target="_blank">4</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags" target="_blank">4</a></span>
+    <span class="count"><a href="/tags" target="_blank">5</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -262,7 +278,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                     <div class="col s12 m12 l4">
                         <div class="profile center-align">
                             <div class="avatar">
-                                <img src="/medias/about/touxiang.jpg" alt="Royee"
+                                <img src="/medias/about/logo.png" alt="Royee"
                                     class="circle responsive-img avatar-img">
                             </div>
                             <div class="author">
@@ -276,14 +292,14 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 
 
 <div class="statis">
-    <span class="count"><a href="/categories" target="_blank">3</a></span>
+    <span class="count"><a href="/categories" target="_blank">4</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags" target="_blank">4</a></span>
+    <span class="count"><a href="/tags" target="_blank">5</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -474,7 +490,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"Git","value":1},{"name":"hexo","value":1},{"name":"PenTest","value":2}],
+                data: [{"name":"Git","value":1},{"name":"hexo","value":1},{"name":"PenTest","value":2},{"name":"随笔","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -498,7 +514,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
         xAxis: [
             {
                 type: 'category',
-                data: ["PenTest","PenTestTool","Git","hexo"]
+                data: ["PenTest","PenTestTool","Git","hexo","随笔"]
             }
         ],
         yAxis: [
@@ -511,7 +527,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [2,2,1,1],
+                data: [2,2,1,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -579,10 +595,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                             <i class="fa fa-address-book"></i>&nbsp;&nbsp;联系我
                         </div>
                         <div id="articleContent" data-aos="fade-up">
-                            <ul>
-<li><b>Email</b><br><a href="mailto:i@gmail.com" target="_blank" rel="noopener">i@gmail.com</a></li>
-</ul>
-
+                            <center> 请移步留言板! O(∩_∩)O </center>
                         </div>
                 </div>
             </div>
@@ -663,8 +676,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
     $(document).ready(function () {
 
         var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-        var pvcountOffset = 00;			  // 初始化首次数据
-        var uvcountOffset = 00;
+        var pvcountOffset = 0040;			  // 初始化首次数据
+        var uvcountOffset = 0020;
 
         function fixCount() {
             if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
@@ -765,8 +778,6 @@ $(function () {
     
 
     <!-- 雪花特效 -->
-    
-    <script type="text/javascript" src="/libs/others/snow.js"></script>
     
 
 </body>

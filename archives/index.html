@@ -98,6 +98,13 @@
     </li>
     
     <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -171,6 +178,15 @@
                 <i class="fa fa-fw fa-link"></i>
                 
                 关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                友情链接
             </a>
         </li>
         
@@ -605,8 +621,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                
-
+                                你好，朋友
                                 
                             </div>
                             <div class="publish-info">
@@ -616,10 +631,23 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                                 </span>
                                 <span class="publish-author">
                                     
+                                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/随笔/" class="post-category" target="_blank">
+                                        随笔
+                                    </a>
+                                    
+                                    
                                 </span>
                             </div>
                         </div>
 
+                        
+                        <div class="card-action article-tags">
+                            
+                            <a href="/tags/随笔/"><span class="chip bg-color">随笔</span></a>
+                            
+                        </div>
                         
                     </div>
                 </div>
@@ -705,8 +733,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
     $(document).ready(function () {
 
         var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-        var pvcountOffset = 00;			  // 初始化首次数据
-        var uvcountOffset = 00;
+        var pvcountOffset = 0040;			  // 初始化首次数据
+        var uvcountOffset = 0020;
 
         function fixCount() {
             if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
@@ -807,8 +835,6 @@ $(function () {
     
 
     <!-- 雪花特效 -->
-    
-    <script type="text/javascript" src="/libs/others/snow.js"></script>
     
 
 </body>

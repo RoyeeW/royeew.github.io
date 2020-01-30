@@ -98,6 +98,13 @@
     </li>
     
     <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -171,6 +178,15 @@
                 <i class="fa fa-fw fa-link"></i>
                 
                 关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                友情链接
             </a>
         </li>
         
@@ -272,6 +288,15 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                     </span>
                 </a>
                 
+                
+                <a href="/tags/随笔/" title="随笔: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="随笔" style="background-color: #FEF9E7;">随笔
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
             </div>
         </div>
     </div>
@@ -296,7 +321,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 <script type="text/javascript">
     
 
-    $('#tag-wordcloud').jQCloud([{"text":"Git","weight":1,"link":"/tags/Git/"},{"text":"hexo","weight":1,"link":"/tags/hexo/"},{"text":"PenTest","weight":2,"link":"/tags/PenTest/"},{"text":"PenTestTool","weight":2,"link":"/tags/PenTestTool/"}], {
+    $('#tag-wordcloud').jQCloud([{"text":"Git","weight":1,"link":"/tags/Git/"},{"text":"hexo","weight":1,"link":"/tags/hexo/"},{"text":"PenTest","weight":2,"link":"/tags/PenTest/"},{"text":"PenTestTool","weight":2,"link":"/tags/PenTestTool/"},{"text":"随笔","weight":1,"link":"/tags/随笔/"}], {
         autoResize: true
     });
 </script>
@@ -378,8 +403,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
     $(document).ready(function () {
 
         var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-        var pvcountOffset = 00;			  // 初始化首次数据
-        var uvcountOffset = 00;
+        var pvcountOffset = 0040;			  // 初始化首次数据
+        var uvcountOffset = 0020;
 
         function fixCount() {
             if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
@@ -480,8 +505,6 @@ $(function () {
     
 
     <!-- 雪花特效 -->
-    
-    <script type="text/javascript" src="/libs/others/snow.js"></script>
     
 
 </body>

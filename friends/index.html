@@ -98,6 +98,13 @@
     </li>
     
     <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -171,6 +178,15 @@
                 <i class="fa fa-fw fa-link"></i>
                 
                 关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                友情链接
             </a>
         </li>
         
@@ -405,23 +421,21 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             <div class="card-content">
                 <div class="card-content article-card-content">
                     <div id="articleContent" data-aos="fade-up">
-                        <h1 id="赞赏名单"><a href="#赞赏名单" class="headerlink" title="赞赏名单"></a>赞赏名单</h1><p>感谢所有赞赏过我的小伙伴啦，你们的支持是我最大的动力！</p>
-<blockquote>
-<p>*name1，*name2，*name3</p>
-</blockquote>
-<h1 id="友链交换"><a href="#友链交换" class="headerlink" title="友链交换"></a>友链交换</h1><p>想要交换友链的小伙伴，欢迎在留言板留言，留言格式：</p>
+                        <blockquote>
+<h1 id="友链交换"><a href="#友链交换" class="headerlink" title="友链交换"></a>友链交换</h1></blockquote>
+<p>想要交换友链的小伙伴，欢迎在留言板留言，留言格式：</p>
 <ul>
 <li><strong>名称：</strong>你的博客名称</li>
 <li><strong>地址：</strong>你的博客地址</li>
 <li><strong>简介：</strong>一句话简介</li>
 <li><strong>头像：</strong>你的头像地址</li>
 </ul>
-<p>例如我的博客友链，大家可以加到自己博客里哦：</p>
+<p>例如:我的博客友链，大家可以加到自己博客里哦：</p>
 <ul>
-<li><strong>名称：</strong>名称</li>
-<li><strong>地址：</strong><a href="https://xxx.com" target="_blank" rel="noopener">https://xxx.com</a></li>
-<li><strong>简介：</strong>ECNU NLPer</li>
-<li><strong>头像：</strong><a href="https://rpt.royee.wang/medias/avatars/avatar.jpg">https://rpt.royee.wang/medias/avatars/avatar.jpg</a></li>
+<li><strong>名称：</strong>*</li>
+<li><strong>地址：</strong><a href="https://rpt.royee.wang">https://rpt.royee.wang</a></li>
+<li><strong>简介：</strong>blababal</li>
+<li><strong>头像：</strong><a href="https://rpt.royee.wang/medias/friendsicon/friends.png">https://rpt.royee.wang/medias/friendsicon/friends.png</a></li>
 </ul>
 
                     </div>
@@ -445,7 +459,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                                 </div>
                             </div>
                             <div class="friend-button">
-                                <a href="https://gitee.com/royeew" target="_blank"
+                                <a href="https://rpt.royee.wang" target="_blank"
                                     class="button button-glow button-rounded button-caution">
                                     访问主页
                                 </a>
@@ -541,8 +555,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
     $(document).ready(function () {
 
         var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-        var pvcountOffset = 00;			  // 初始化首次数据
-        var uvcountOffset = 00;
+        var pvcountOffset = 0040;			  // 初始化首次数据
+        var uvcountOffset = 0020;
 
         function fixCount() {
             if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
@@ -643,8 +657,6 @@ $(function () {
     
 
     <!-- 雪花特效 -->
-    
-    <script type="text/javascript" src="/libs/others/snow.js"></script>
     
 
 </body>
