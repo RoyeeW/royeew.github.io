@@ -4,6 +4,46 @@
   
     
     <entry>
+      <title>OSCP-PWK-知识体系思维导图</title>
+      <link href="/2020/02/01/oscp-pwk-zhi-shi-ti-xi-si-wei-dao-tu/"/>
+      <url>/2020/02/01/oscp-pwk-zhi-shi-ti-xi-si-wei-dao-tu/</url>
+      
+        <content type="html"><![CDATA[<p><img src="1.jpg" alt="Linux基础"><br><img src="2.jpg" alt="nc-netcat-ncat"><br><img src="3.jpg" alt="被动信息搜集"><br><img src="4.jpg" alt="主动信息搜集及漏扫"><br><img src="5.jpg" alt="SLMail server的BOF"><br><img src="6.jpg" alt="Linux高阶"><br><img src="7.jpg" alt="win32"><br><img src="8.jpg" alt="MySQL"><br><img src="9.jpg" alt="web漏洞"><br><img src="10.jpg" alt="MySQL提权"><br><img src="11.jpg" alt="Linux提权基础I"><br><img src="12.jpg" alt="Linux提权基础II"><br><img src="13.jpg" alt="Windows提权"></p><blockquote><p>参考文献<br>[1] Offensive Security.Penetration Testing Virtual Labs[Z],[Online]Available:<a href="https://www.offensive-security.com/offensive-security-solutions/virtual-penetration-testing-labs/.(2019)" target="_blank" rel="noopener">https://www.offensive-security.com/offensive-security-solutions/virtual-penetration-testing-labs/.(2019)</a><br>[2] Offensive Security.Penetration Testing with Kali Lab Overview[Z]，[Online]Available:<a href="https://www.offensive-security.com/information-security-training/penetration-testing-training-kali-linux/.(2019)" target="_blank" rel="noopener">https://www.offensive-security.com/information-security-training/penetration-testing-training-kali-linux/.(2019)</a><br>[3] Abatchy.OSCP-like Vulnhub VMs[Z],[Online]Available:<a href="https://www.abatchy.com/2017/02/oscp-like-vulnhub-vms.html.(2017-02-23)" target="_blank" rel="noopener">https://www.abatchy.com/2017/02/oscp-like-vulnhub-vms.html.(2017-02-23)</a><br>[4] happytree.OSCP经验分享[Z]，[Online]Available:<a href="https://xz.aliyun.com/t/1587/.(2017-11-15)" target="_blank" rel="noopener">https://xz.aliyun.com/t/1587/.(2017-11-15)</a><br>[5] g0tmi1k.Basic Linux Privilege Escalation[Z]，[Online]Available:<a href="https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/.(2011-08-02)" target="_blank" rel="noopener">https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/.(2011-08-02)</a><br>[6] FuzzySecurity.Windows Privilege Escalation Fundamentals[Z]，[Online]Available:<a href="http://www.fuzzysecurity.com/tutorials/16.html" target="_blank" rel="noopener">http://www.fuzzysecurity.com/tutorials/16.html</a></p></blockquote><h4 id="如果觉得图不错，我觉得你可以鼓励一下我。"><a href="#如果觉得图不错，我觉得你可以鼓励一下我。" class="headerlink" title="如果觉得图不错，我觉得你可以鼓励一下我。"></a><center>如果觉得图不错，我觉得你可以鼓励一下我。</center></h4>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> PenTest </tag>
+            
+            <tag> OSCP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>B站,油管等视频网站视频下载</title>
+      <link href="/2020/02/01/shi-pin-wang-zhan-shi-pin-xia-zai/"/>
+      <url>/2020/02/01/shi-pin-wang-zhan-shi-pin-xia-zai/</url>
+      
+        <content type="html"><![CDATA[<h1 id="B站-油管等视频网站视频下载-You-Get"><a href="#B站-油管等视频网站视频下载-You-Get" class="headerlink" title=" B站,油管等视频网站视频下载 You-Get"></a><center> B站,油管等视频网站视频下载 You-Get</center></h1><blockquote><p><strong>前言</strong></p><p>我们有时在视频网站上看到一些经典的视频片段，想要下载下来收藏或分享给朋友。但是很多主流的视频网站必须要安装客户端才可以下载，比较麻烦；也有的并不提供下载功能。<br>我们可以通过一些工具来下载,这里我们介绍一款工具You-Get</p></blockquote><hr><h3 id="You-Get-介绍"><a href="#You-Get-介绍" class="headerlink" title="You-Get 介绍"></a>You-Get 介绍</h3><p>   <a href="https://you-get.org/" target="_blank" rel="noopener">官网</a> https //you-get.org</p><blockquote><p>You-Get is a tiny command-line utility to download media contents (videos, audios, images) from the Web, in case there is no other handy way to do it.</p></blockquote><h3 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h3><pre class="line-numbers language-code"><code class="language-code">$ you-get 'https://www.youtube.com/watch?v=jNQXAC9IVRw'site:                YouTubetitle:               Me at the zoostream:    - itag:          43      container:     webm      quality:       medium      size:          0.5 MiB (564215 bytes)    # download-with: you-get --itag=43 [URL]Downloading Me at the zoo.webm ... 100% (  0.5/  0.5MB) ├██████████████████████████████████┤[1/1]    6 MB/sSaving Me at the zoo.en.srt ... Done.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><hr><h3 id="You-Get-安装"><a href="#You-Get-安装" class="headerlink" title="You-Get 安装"></a>You-Get 安装</h3><h4 id="安装前准备"><a href="#安装前准备" class="headerlink" title="安装前准备"></a>安装前准备</h4><ul><li>Python 3.2 or above  </li><li>FFmpeg 1.0 or above</li></ul><p><strong>1. Python3 安装请自行搜狗搜索</strong><br><strong>2. FFmpeg 安装</strong></p><pre class="line-numbers language-code"><code class="language-code">$ pip3 install ffmpeg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="1.jpg" alt></p><h4 id="You-Get安装"><a href="#You-Get安装" class="headerlink" title="You-Get安装"></a>You-Get安装</h4><pre class="line-numbers language-code"><code class="language-code">$ pip3 install you-get<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="2.jpg" alt></p><h4 id="You-Get升级"><a href="#You-Get升级" class="headerlink" title="You-Get升级"></a>You-Get升级</h4><pre class="line-numbers language-code"><code class="language-code">$ pip3 install --upgrade you-get<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="至此You-Get就安装完毕了-接下来让我们尝试下吧"><a href="#至此You-Get就安装完毕了-接下来让我们尝试下吧" class="headerlink" title="至此You-Get就安装完毕了.接下来让我们尝试下吧"></a>至此You-Get就安装完毕了.接下来让我们尝试下吧</h3><p>找一个视频 例如: 邓紫棋-光年之外 <a href="https://www.bilibili.com/bangumi/play/ep307677" target="_blank" rel="noopener">https://www.bilibili.com/bangumi/play/ep307677</a><br>打开命令行,进入一个你想存放视频的目录,例如</p><pre><code>cd d:/tmpyou-get https://www.bilibili.com/bangumi/play/ep307677</code></pre><p><img src="4.jpg" alt></p><p>下载成功<br><img src="5.jpg" alt></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 视频工具 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>sqlmap-参数详解</title>
       <link href="/2019/04/04/sqlmap-can-shu-xiang-jie/"/>
       <url>/2019/04/04/sqlmap-can-shu-xiang-jie/</url>
