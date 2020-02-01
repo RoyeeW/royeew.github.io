@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://rpt.royee.wang/"/>
-  <updated>2020-02-01T10:52:26.566Z</updated>
+  <updated>2020-02-01T12:54:02.293Z</updated>
   <id>https://rpt.royee.wang/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://rpt.royee.wang/2020/02/01/oscp-pwk-zhi-shi-ti-xi-si-wei-dao-tu/"/>
     <id>https://rpt.royee.wang/2020/02/01/oscp-pwk-zhi-shi-ti-xi-si-wei-dao-tu/</id>
     <published>2020-02-01T10:17:11.000Z</published>
-    <updated>2020-02-01T10:52:26.566Z</updated>
+    <updated>2020-02-01T12:54:02.293Z</updated>
     
     <summary type="html">
     
@@ -35,10 +35,14 @@
     
     </summary>
     
+      <category term="OSCP" scheme="https://rpt.royee.wang/categories/OSCP/"/>
     
-      <category term="PenTest" scheme="https://rpt.royee.wang/tags/PenTest/"/>
+      <category term="PenTest" scheme="https://rpt.royee.wang/categories/OSCP/PenTest/"/>
+    
     
       <category term="OSCP" scheme="https://rpt.royee.wang/tags/OSCP/"/>
+    
+      <category term="PenTest" scheme="https://rpt.royee.wang/tags/PenTest/"/>
     
   </entry>
   
@@ -47,7 +51,7 @@
     <link href="https://rpt.royee.wang/2020/02/01/shi-pin-wang-zhan-shi-pin-xia-zai/"/>
     <id>https://rpt.royee.wang/2020/02/01/shi-pin-wang-zhan-shi-pin-xia-zai/</id>
     <published>2020-02-01T08:52:13.000Z</published>
-    <updated>2020-02-01T10:11:31.686Z</updated>
+    <updated>2020-02-01T12:53:38.790Z</updated>
     
     <summary type="html">
     
@@ -60,6 +64,8 @@
       
     
     </summary>
+    
+      <category term="视频工具" scheme="https://rpt.royee.wang/categories/%E8%A7%86%E9%A2%91%E5%B7%A5%E5%85%B7/"/>
     
     
       <category term="视频工具" scheme="https://rpt.royee.wang/tags/%E8%A7%86%E9%A2%91%E5%B7%A5%E5%85%B7/"/>
