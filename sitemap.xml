@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://rpt.royee.wang/2020/02/04/nb-de-kai-yuan-lu-ping-lu-yin-gong-ju-captura/</loc>
+    
+    <lastmod>2020-02-04T06:28:38.939Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://rpt.royee.wang/2020/02/02/captcha-yan-zheng-ma-lou-dong/</loc>
+    
+    <lastmod>2020-02-02T07:29:59.104Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://rpt.royee.wang/2020/02/02/markdown-cheatsheet/</loc>
+    
+    <lastmod>2020-02-02T07:29:18.441Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://rpt.royee.wang/2020/02/01/oscp-pwk-zhi-shi-ti-xi-si-wei-dao-tu/</loc>
     
     <lastmod>2020-02-01T13:00:39.852Z</lastmod>
@@ -79,13 +100,6 @@
   </url>
   
   <url>
-    <loc>https://rpt.royee.wang/archives/index.html</loc>
-    
-    <lastmod>2020-01-29T10:25:34.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://rpt.royee.wang/categories/index.html</loc>
     
     <lastmod>2020-01-29T10:25:34.000Z</lastmod>
@@ -94,6 +108,13 @@
   
   <url>
     <loc>https://rpt.royee.wang/tags/index.html</loc>
+    
+    <lastmod>2020-01-29T10:25:34.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://rpt.royee.wang/archives/index.html</loc>
     
     <lastmod>2020-01-29T10:25:34.000Z</lastmod>
     

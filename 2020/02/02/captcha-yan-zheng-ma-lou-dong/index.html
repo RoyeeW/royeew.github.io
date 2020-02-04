@@ -4,12 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="你好，朋友, PenTest 渗透测试">
+    <meta name="keywords" content="CAPTCHA-验证码-介绍, PenTest 渗透测试">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
     <meta name="description" content="
-">
+你是不是要经常输入验证码？登录网站时输完密码，要输入一个单词或者几个歪歪扭扭不怎么好辨认的字母，这个场景一定不陌生？有没有思考为什么要输入验证码？验证码有什么作用？
+
+什么是验证码?CAPTCHACAPTCHA，Completely Au">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>你好，朋友 | Royee的安全屋</title>
+    <title>CAPTCHA-验证码-介绍 | Royee的安全屋</title>
     <link rel="icon" type="image/png" href="/medias/about/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -228,13 +230,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        你好，朋友
+                        CAPTCHA-验证码-介绍
                     </div>
                 </div>
             </div>
@@ -345,8 +347,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/随笔/" target="_blank">
-                            <span class="chip bg-color">随笔</span>
+                        <a href="/tags/验证码/" target="_blank">
+                            <span class="chip bg-color">验证码</span>
                         </a>
                         
                     </div>
@@ -357,8 +359,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/随笔/" class="post-category" target="_blank">
-                            随笔
+                        <a href="/categories/验证码/" class="post-category" target="_blank">
+                            验证码
                         </a>
                         
                     </div>
@@ -369,7 +371,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-01-21
+                    2020-02-02
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -383,7 +385,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    302
                 </div>
                 
 
@@ -406,7 +408,19 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="haha.png" alt="hello"></p>
+                <blockquote>
+<p>你是不是要经常输入验证码？登录网站时输完密码，要输入一个单词或者几个歪歪扭扭不怎么好辨认的字母，这个场景一定不陌生？有没有思考为什么要输入验证码？验证码有什么作用？</p>
+</blockquote>
+<h2 id="什么是验证码"><a href="#什么是验证码" class="headerlink" title="什么是验证码?"></a>什么是验证码?</h2><h3 id="CAPTCHA"><a href="#CAPTCHA" class="headerlink" title="CAPTCHA"></a>CAPTCHA</h3><p>CAPTCHA，Completely Automated Public Turing Test to tell Computers and Humans Apart<br>由CMU的教授Luis von Ahn提出，翻译一下是“全自动区分计算机和人类的图灵测试”，能够防止软件被大量恶意攻击<br><img src="1.jpg" alt></p>
+<h3 id="reCAPTCHA"><a href="#reCAPTCHA" class="headerlink" title="reCAPTCHA"></a>reCAPTCHA</h3><p>Luis von Ahn算了笔帐，假如每次人们输入验证码需要10秒钟，每天有2亿人需要输入验证码，那么人类就浪费了50万个小时！<br>这个数字是很可怕的，于是他弄了一个东西出来，叫 reCAPTCHA。reCAPTCHA和CAPTCHA的不同的每次要输入两个单词<br><img src="2.jpg" alt></p>
+<h2 id="验证码的漏洞"><a href="#验证码的漏洞" class="headerlink" title="验证码的漏洞"></a>验证码的漏洞</h2><p>分两种:</p>
+<ol>
+<li>验证码输入正确, 但是没有进行刷新</li>
+<li>验证码可识别</li>
+</ol>
+<h2 id="验证码的漏洞-修补"><a href="#验证码的漏洞-修补" class="headerlink" title="验证码的漏洞-修补"></a>验证码的漏洞-修补</h2><ol>
+<li>验证码,提交服务端处理, 当验证码在判断逻辑使用后,需要立即刷新验证码,然后再进入后续代码逻辑</li>
+</ol>
 
             </div>
             <hr />
@@ -565,9 +579,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《你好，朋友》
+                    《CAPTCHA-验证码-介绍》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/01/21/ni-hao-peng-you/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/02/02/captcha-yan-zheng-ma-lou-dong/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Royee
             </a> 采用
@@ -608,7 +622,7 @@
         repo: 'royeew.github.io',
         owner: 'RoyeeW',
         admin: "Royee",
-        id: '2019/01/21/ni-hao-peng-you/',
+        id: '2020/02/02/captcha-yan-zheng-ma-lou-dong/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -895,31 +909,46 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/01/21/git-chang-yong-ming-ling-da-quan/">
+                <a href="/2020/02/02/markdown-cheatsheet/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Git常用命令大全">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="markdown-cheatsheet">
                         
-                        <span class="card-title">Git常用命令大全</span>
+                        <span class="card-title">markdown-cheatsheet</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Git常用命令大全
+                            ## &lt;center&gt;居中&lt;/center&gt;
+
+&gt; 应用文章或概述或做标题
+
+
+# 0x01 标题
+#### 0x0101 标题
+*斜体*
+**加粗**
+~~删除线~~
+分隔符
+---
+***
+
+
+##### 
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-21
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-02-02
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Git/" class="post-category" target="_blank">
-                                    Git
+                            <a href="/categories/markdown/" class="post-category" target="_blank">
+                                    markdown
                                 </a>
                             
                             
@@ -929,8 +958,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Git/" target="_blank">
-                        <span class="chip bg-color">Git</span>
+                    <a href="/tags/markdown/" target="_blank">
+                        <span class="chip bg-color">markdown</span>
                     </a>
                     
                 </div>
@@ -941,46 +970,49 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/01/21/ni-hao-peng-you/">
+                <a href="/2020/02/01/oscp-pwk-zhi-shi-ti-xi-si-wei-dao-tu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="你好，朋友">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="OSCP-PWK-知识体系思维导图">
                         
-                        <span class="card-title">你好，朋友</span>
+                        <span class="card-title">OSCP-PWK-知识体系思维导图</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            你好，朋友
+                            OSCP-PWK知识体系 脑图
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-21
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-02-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/随笔/" class="post-category" target="_blank">
-                                    随笔
+                            <a href="/categories/OSCP/" class="post-category" target="_blank">
+                                    OSCP
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/随笔/" target="_blank">
-                        <span class="chip bg-color">随笔</span>
+                    <a href="/tags/OSCP/" target="_blank">
+                        <span class="chip bg-color">OSCP</span>
+                    </a>
+                    
+                    <a href="/tags/PenTest/" target="_blank">
+                        <span class="chip bg-color">PenTest</span>
                     </a>
                     
                 </div>
@@ -1127,6 +1159,13 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
     <footer class="page-footer bg-color">
     <div class="container row center-align">

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://rpt.royee.wang/"/>
-  <updated>2020-02-01T13:00:39.852Z</updated>
+  <updated>2020-02-04T06:28:38.939Z</updated>
   <id>https://rpt.royee.wang/</id>
   
   <author>
@@ -15,6 +15,103 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nb的开源录屏录音工具-Captura</title>
+    <link href="https://rpt.royee.wang/2020/02/04/nb-de-kai-yuan-lu-ping-lu-yin-gong-ju-captura/"/>
+    <id>https://rpt.royee.wang/2020/02/04/nb-de-kai-yuan-lu-ping-lu-yin-gong-ju-captura/</id>
+    <published>2020-02-04T03:59:22.000Z</published>
+    <updated>2020-02-04T06:28:38.939Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;div align=&quot;middle&quot;&gt;&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="视频工具" scheme="https://rpt.royee.wang/categories/%E8%A7%86%E9%A2%91%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="视频工具" scheme="https://rpt.royee.wang/tags/%E8%A7%86%E9%A2%91%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>markdown-cheatsheet</title>
+    <link href="https://rpt.royee.wang/2020/02/02/markdown-cheatsheet/"/>
+    <id>https://rpt.royee.wang/2020/02/02/markdown-cheatsheet/</id>
+    <published>2020-02-02T05:57:48.000Z</published>
+    <updated>2020-02-02T07:29:18.441Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;pre&gt;&lt;code&gt;## &amp;lt;center&amp;gt;居中&amp;lt;/center&amp;gt;
+
+&amp;gt; 应用文章或概述或做标题
+
+
+# 0x01 标题
+#### 0x0101 标题
+*斜体*
+**加粗**
+~~删除线~~
+分隔符
+---
+***
+
+
+##### 有序号列表
+1.
+        
+      
+    
+    </summary>
+    
+      <category term="markdown" scheme="https://rpt.royee.wang/categories/markdown/"/>
+    
+    
+      <category term="markdown" scheme="https://rpt.royee.wang/tags/markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CAPTCHA-验证码-介绍</title>
+    <link href="https://rpt.royee.wang/2020/02/02/captcha-yan-zheng-ma-lou-dong/"/>
+    <id>https://rpt.royee.wang/2020/02/02/captcha-yan-zheng-ma-lou-dong/</id>
+    <published>2020-02-02T04:30:16.000Z</published>
+    <updated>2020-02-02T07:29:59.104Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;你是不是要经常输入验证码？登录网站时输完密码，要输入一个单词或者几个歪歪扭扭不怎么好辨认的字母，这个场景一定不陌生？有没有思考为什么要输入验证码？验证码有什么作用？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;什么是验证码&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="验证码" scheme="https://rpt.royee.wang/categories/%E9%AA%8C%E8%AF%81%E7%A0%81/"/>
+    
+    
+      <category term="验证码" scheme="https://rpt.royee.wang/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/"/>
+    
+  </entry>
   
   <entry>
     <title>OSCP-PWK-知识体系思维导图</title>

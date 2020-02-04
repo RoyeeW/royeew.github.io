@@ -4,6 +4,81 @@
   
     
     <entry>
+      <title>nb的开源录屏录音工具-Captura</title>
+      <link href="/2020/02/04/nb-de-kai-yuan-lu-ping-lu-yin-gong-ju-captura/"/>
+      <url>/2020/02/04/nb-de-kai-yuan-lu-ping-lu-yin-gong-ju-captura/</url>
+      
+        <content type="html"><![CDATA[<div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1357785909&auto=1&height=66"></iframe></div><h2 id="Captura"><a href="#Captura" class="headerlink" title="Captura"></a><center>Captura</center></h2><hr><h1 id="0x01-介绍"><a href="#0x01-介绍" class="headerlink" title="0x01 介绍"></a>0x01 介绍</h1><blockquote><p>Captura 是一款可以截图，录屏，录不同音源，以及在录制视频时可以记录键盘，鼠标事件的工具。它的视频引擎使用的是ffmpeg开源工具。因而也继承了这一开源属性</p></blockquote><h1 id="0x02-官网"><a href="#0x02-官网" class="headerlink" title="0x02 官网"></a>0x02 官网</h1><blockquote><p><a href="https://mathewsachin.github.io/Captura/" target="_blank" rel="noopener"></a><br><a href="https://mathewsachin.github.io/Captura/download/" target="_blank" rel="noopener">下载链接</a><br><a href="https://github.com/MathewSachin/Captura" target="_blank" rel="noopener">Github Page</a></p></blockquote><h1 id="0x02-录屏效果"><a href="#0x02-录屏效果" class="headerlink" title="0x02 录屏效果"></a>0x02 录屏效果</h1><p><video src="2020-02-04-13-44-06.mp4" controls="controls" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"></video></p><center>39秒，2.03 MB（画质可自行调）</center><h1 id="0x03-软件界面"><a href="#0x03-软件界面" class="headerlink" title="0x03 软件界面"></a>0x03 软件界面</h1><p><img src="1.jpg" alt><br><img src="2.jpg" alt><br><img src="3.jpg" alt></p><h1 id="0x04-设置"><a href="#0x04-设置" class="headerlink" title="0x04 设置"></a>0x04 设置</h1><p><img src="4.jpg" alt><br><img src="5.jpg" alt><br><img src="6.jpg" alt></p><blockquote><p>该工具是个很不错的工具，如果你认为8错，可以捐助来支持作者</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 视频工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 视频工具 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>markdown-cheatsheet</title>
+      <link href="/2020/02/02/markdown-cheatsheet/"/>
+      <url>/2020/02/02/markdown-cheatsheet/</url>
+      
+        <content type="html"><![CDATA[<pre><code>## &lt;center&gt;居中&lt;/center&gt;&gt; 应用文章或概述或做标题# 0x01 标题#### 0x0101 标题*斜体***加粗**~~删除线~~分隔符---***##### 有序号列表1. aaa2. bbb    + b1    + b2##### 无序号列表- 1 无须列表    - 1.1 aaa            - 1.1.1 aaa            - 1.1.1.1 aaa    - 1.2 bbb##### 表格列1|列2:-:|:-:行1|行2|##### 图片    本地图片 ![描述](当前所在目录的文件夹/1.jpg)     ![网络图片](https://cache.soso.com/baike/i/logo/unify_logo_1@1x.png)     指定图片尺寸,用html方式,markdown不支持    &lt;img src=&quot;https://cache.soso.com/baike/i/logo/unify_logo_1@1x.png&quot; width=&quot;50%&quot;&gt; ##### 超链    [官网](https://royeew.gitee.io)    直接使用超链 &lt;https://royeew.gitee.io&gt;##### 注释    &lt;!--注释--&gt;##### 高亮    `heightlight`##### 代码块    ``` 包裹一段代码，并指定一种语言（也可以不指定）        echo &quot;Hello World!&quot;    ```    ```         普通块    ```    ``` bash    echo &quot;Hello World!&quot;    #!/usr/bin/env python    ```    ``` python    print(&quot;Hello World!&quot;)    #!/usr/bin/env python    ```    ``` print(&quot;Hello World!&quot;) ```</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> markdown </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CAPTCHA-验证码-介绍</title>
+      <link href="/2020/02/02/captcha-yan-zheng-ma-lou-dong/"/>
+      <url>/2020/02/02/captcha-yan-zheng-ma-lou-dong/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>你是不是要经常输入验证码？登录网站时输完密码，要输入一个单词或者几个歪歪扭扭不怎么好辨认的字母，这个场景一定不陌生？有没有思考为什么要输入验证码？验证码有什么作用？</p></blockquote><h2 id="什么是验证码"><a href="#什么是验证码" class="headerlink" title="什么是验证码?"></a>什么是验证码?</h2><h3 id="CAPTCHA"><a href="#CAPTCHA" class="headerlink" title="CAPTCHA"></a>CAPTCHA</h3><p>CAPTCHA，Completely Automated Public Turing Test to tell Computers and Humans Apart<br>由CMU的教授Luis von Ahn提出，翻译一下是“全自动区分计算机和人类的图灵测试”，能够防止软件被大量恶意攻击<br><img src="1.jpg" alt></p><h3 id="reCAPTCHA"><a href="#reCAPTCHA" class="headerlink" title="reCAPTCHA"></a>reCAPTCHA</h3><p>Luis von Ahn算了笔帐，假如每次人们输入验证码需要10秒钟，每天有2亿人需要输入验证码，那么人类就浪费了50万个小时！<br>这个数字是很可怕的，于是他弄了一个东西出来，叫 reCAPTCHA。reCAPTCHA和CAPTCHA的不同的每次要输入两个单词<br><img src="2.jpg" alt></p><h2 id="验证码的漏洞"><a href="#验证码的漏洞" class="headerlink" title="验证码的漏洞"></a>验证码的漏洞</h2><p>分两种:</p><ol><li>验证码输入正确, 但是没有进行刷新</li><li>验证码可识别</li></ol><h2 id="验证码的漏洞-修补"><a href="#验证码的漏洞-修补" class="headerlink" title="验证码的漏洞-修补"></a>验证码的漏洞-修补</h2><ol><li>验证码,提交服务端处理, 当验证码在判断逻辑使用后,需要立即刷新验证码,然后再进入后续代码逻辑</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 验证码 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 验证码 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>OSCP-PWK-知识体系思维导图</title>
       <link href="/2020/02/01/oscp-pwk-zhi-shi-ti-xi-si-wei-dao-tu/"/>
       <url>/2020/02/01/oscp-pwk-zhi-shi-ti-xi-si-wei-dao-tu/</url>
