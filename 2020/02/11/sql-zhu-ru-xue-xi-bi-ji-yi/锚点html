@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<tittle>锚点概念</tittle>
+	</head>
+	<body>
+		<ul>
+			<li> <a href = '#md1'>锚点1</a> </li>
+			<li> <a href = '#md2'>锚点2</a> </li>
+			<li> <a href = '#md3'>锚点3</a> </li>
+		</ul>
+		<a name='#md1' id = 'md1'>已跳转到锚点1</a>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<a name='#md2' id = 'md2'>已跳转到锚点2</a>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<a name='#md3' id = 'md3'>已跳转到锚点3</a>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+
+	</body>
+</html>

